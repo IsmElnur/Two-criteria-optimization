@@ -16,7 +16,7 @@ Discrete uniform noise $σ = (σ_0,...,σ_K)$ with zero average and uniformly di
 \overline{f}_k(α)=\displaystyle\prod_{j=k-M}^{k+M} \tilde{f}_j^{α_{j+M+1-k}}
 ```
 
-In the formula, $\overline{f}_k$ is the values of the filtered signal; $r=2M+1$ – averaging window size; $α=(α_1,...,α_r)$ – normalized weight coefficients, such that
+In the formula, $\overline{f}_k$ is the values of the filtered signal; $r=2M+1$ is averaging window size; $α=(α_1,...,α_r)$ is normalized weight coefficients, such that
 ```math
 \displaystyle\sum_{j=1}^{r} α_j=1; α_j \geq 0
 ```
