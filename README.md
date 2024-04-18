@@ -1,4 +1,4 @@
-# Two-criteria-optimization
+# Two-objective-optimization
 
 The basic principles of multicriteria optimization in combination with methods of random and direct passive search are considered in relation to the problem of filtering a discrete signal using the weighted moving average method.
 
