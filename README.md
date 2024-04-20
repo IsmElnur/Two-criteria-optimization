@@ -43,3 +43,61 @@ It's necessary for different values of weights $\lambda_l=\frac{l}{L}$ $(l=0,...
 ```math
 N=\frac{ln(1-P)}{ln(1-\frac{\epsilon}{x_{max}-x_{min}})}
 ```
+Random values of weights are taken symmetrical with respect to the central weight $\alpha_{M+1}$ and calculated taking into account the normalization condition, id est, uniformly distributed over a sequence of residual intervals.
+$$\alpha_{M+1}=rnd(0,1)$$
+$$\alpha_{M}=\alpha_{M+2}=0.5rnd(0,1-\alpha_{M+1})$$
+$$...$$
+$$\alpha_m=\alpha_{r-m+1}=0.5rnd(0.1-\displaystyle\sum_{s=m+1}^{r-m} \alpha_s)$$
+$$...$$
+$$\alpha_1=\alpha_r=0.5(1-\displaystyle\sum_{s=2}^{r-1} \alpha_s)$$
+
+The final goal of the work is to find the optimal weight $\lambda^{·}$ (by direct passive search on a grid $\lambda_l$), which minimizes the distance from the approximately found optimal value of the integral criterion $J^{·}(\omega^{·},\delta^{·})$ to the ideal point $\hat{J}(\hat{\omega},\hat{\delta})=\hat{J}(0,0)=0$:
+$$dist(J^{·},\hat{J})\to\underset{\lambda}{min}$$
+
+Formula for calculating distance:
+$$dist(J^{·},\hat{J})=|\omega|+|\delta|$$
+
+## Model problem
+
+The original signal is:
+$$f_k=sin(x_k)+0.5$$
+$$x_k=x_{min}+\frac{k(x_{max}-x_{min})}{K}; k=0,...,K; K=100$$
+$$x_{min}=0; x_{max}=\pi$$
+
+The amplitude of the uniform noise is $2a=0.5$
+
+Sampling the convolution weight is $\lambda_l=\frac{l}{L}$ $(l=0,...,L);L=10$
+
+The probability of falling into the vicinity of the extreme is $P=0.95$
+
+The uncertainty interval is $\epsilon=0.01$
+
+Sliding window size is $r=3$; $r=5$
+
+## Progress of work
+
+For an averaging window of size $r=3$, we calculate for each value $\lambda_l$ the minimum: $J$, $dist(J^{·},\hat{J})$, values of the weight $\alpha$, the value of the noise criterion $\omega$, and the proximity criterion $\delta$. We'll enter the measurement results into a table.
+
+Using the direct passive search method, we can conclude that the optimal value of the weight is $\lambda_5=0.5$. Minimum distance is $dist(J^{·},\hat{J})=18.87$
+
+We'll build graphs of signals, where the original signal $f_k$, the filtered signal $\overline{f}_k$ and noise $\tilde{f}_k$.
+
+![image](https://github.com/IsmElnur/Two-criteria-optimization/assets/37519575/e0fb0fe0-511b-4dc1-9acd-a51918943349)
+
+We'll construct a graphical display of the found approximations to the optimal criteria in the coordinate system $(\omega,\delta)$ depending on the weights $\lambda_l$.
+
+![image](https://github.com/IsmElnur/Two-criteria-optimization/assets/37519575/5fddf818-c01b-4918-af60-7d062623f7bc)
+
+For an averaging window of size $r=5$, we calculate for each value $\lambda_l$ the minimum: $J$, $dist(J^{·},\hat{J})$, values of the weight $\alpha$, the value of the noise criterion $\omega$, and the proximity criterion $\delta$. We'll enter the measurement results into a table.
+
+Using the direct passive search method, we can conclude that the optimal value of the weight is $\lambda_5=0.5$. Minimum distance is $dist(J^{·},\hat{J})=16.768$
+
+We'll build graphs of signals, where the original signal $f_k$, the filtered signal $\overline{f}_k$ and noise $\tilde{f}_k$.
+
+![image](https://github.com/IsmElnur/Two-criteria-optimization/assets/37519575/6fe69e81-cc81-4238-8c13-173468c3e605)
+
+We'll construct a graphical display of the found approximations to the optimal criteria in the coordinate system $(\omega,\delta)$ depending on the weights $\lambda_l$.
+
+![image](https://github.com/IsmElnur/Two-criteria-optimization/assets/37519575/be1f68ae-81c5-4e38-939e-7f92db362602)
+
+The algorithm for solving two-objective optimization is implemented in the C++ programming language.
