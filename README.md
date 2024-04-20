@@ -60,7 +60,7 @@ $$dist(J^{·},\hat{J})=|\omega|+|\delta|$$
 ## Model problem
 
 The original signal is:
-$$f_k=sin(x_k)+0.5$$
+$$f_k=\sin(x_k)+0.5$$
 $$x_k=x_{min}+\frac{k(x_{max}-x_{min})}{K}; k=0,...,K; K=100$$
 $$x_{min}=0; x_{max}=\pi$$
 
