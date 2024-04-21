@@ -11,7 +11,7 @@ k=0, ..., K;
 ```
 $K$ is number of counts.
 
-Discrete uniform noise $\alpha = (\alpha_0,...,\alpha_K)$ with zero average and uniformly distributed amplitude over the interval $[-a;a]: \tilde{f}_k=f_k+\alpha_k; \alpha_k=rnd(-a;a)$ is superimposed on the signal. It's necessary to filter the signal by the weighted moving average method – geometric mean:
+Discrete uniform noise $\alpha = (\alpha_0,...,\alpha_K)$ with zero average and uniformly distributed amplitude over the interval $[-a;a]: \tilde{f}_k=f_k+\alpha_k; \alpha_k=rnd(-a,a)$ is superimposed on the signal. It's necessary to filter the signal by the weighted moving average method – geometric mean:
 ```math
 \overline{f}_k(α)=\displaystyle\prod_{j=k-M}^{k+M} \tilde{f}_j^{\alpha_{j+M+1-k}}
 ```
@@ -51,7 +51,7 @@ $$\alpha_m=\alpha_{r-m+1}=0.5rnd(0,1-\displaystyle\sum_{s=m+1}^{r-m} \alpha_s)$$
 $$...$$
 $$\alpha_1=\alpha_r=0.5(1-\displaystyle\sum_{s=2}^{r-1} \alpha_s)$$
 
-The final goal of the work is to find the optimal weight $\lambda^{·}$ (by direct passive search on a grid $\lambda_l$), which minimizes the distance from the approximately found optimal value of the integral criterion $J^{·}(\omega^{·},\delta^{·})$ to the ideal point $\hat{J}(\hat{\omega},\hat{\delta})=\hat{J}(0;0)=0$:
+The final goal of the work is to find the optimal weight $\lambda^{·}$ (by direct passive search on a grid $\lambda_l$), which minimizes the distance from the approximately found optimal value of the integral criterion $J^{·}(\omega^{·},\delta^{·})$ to the ideal point $\hat{J}(\hat{\omega},\hat{\delta})=\hat{J}(0,0)=0$:
 $$dist(J^{·},\hat{J})\to\underset{\lambda}{min}$$
 
 Formula for calculating distance:
