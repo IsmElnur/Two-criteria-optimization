@@ -11,14 +11,14 @@ k=0, ..., K;
 ```
 $K$ is number of counts.
 
-Discrete uniform noise $σ = (σ_0,...,σ_K)$ with zero average and uniformly distributed amplitude over the interval $[-a,a]: \tilde{f}_k=f_k+σ_k; σ_k=rnd(-a,a)$ is superimposed on the signal. It's necessary to filter the signal by the weighted moving average method – geometric mean:
+Discrete uniform noise $\alpha = (\alpha_0,...,\alpha_K)$ with zero average and uniformly distributed amplitude over the interval $[-a;a]: \tilde{f}_k=f_k+\alpha_k; \alpha_k=rnd(-a;a)$ is superimposed on the signal. It's necessary to filter the signal by the weighted moving average method – geometric mean:
 ```math
-\overline{f}_k(α)=\displaystyle\prod_{j=k-M}^{k+M} \tilde{f}_j^{α_{j+M+1-k}}
+\overline{f}_k(α)=\displaystyle\prod_{j=k-M}^{k+M} \tilde{f}_j^{\alpha_{j+M+1-k}}
 ```
 
-In the formula, $\overline{f}_k$ is the values of the filtered signal; $r=2M+1$ is averaging window size; $α=(α_1,...,α_r)$ is normalized weight coefficients, such that
+In the formula, $\overline{f}_k$ is the values of the filtered signal; $r=2M+1$ is averaging window size; $\alpha=(\alpha_1,...,\alpha_r)$ is normalized weight coefficients, such that
 ```math
-\displaystyle\sum_{j=1}^{r} α_j=1; α_j \geq 0
+\displaystyle\sum_{j=1}^{r} \alpha_j=1; \alpha_j \geq 0
 ```
 
 The set of weights α should provide optimization of the filtered signal.
@@ -47,11 +47,11 @@ Random values of weights are taken symmetrical with respect to the central weigh
 $$\alpha_{M+1}=rnd(0,1)$$
 $$\alpha_{M}=\alpha_{M+2}=0.5rnd(0,1-\alpha_{M+1})$$
 $$...$$
-$$\alpha_m=\alpha_{r-m+1}=0.5rnd(0.1-\displaystyle\sum_{s=m+1}^{r-m} \alpha_s)$$
+$$\alpha_m=\alpha_{r-m+1}=0.5rnd(0,1-\displaystyle\sum_{s=m+1}^{r-m} \alpha_s)$$
 $$...$$
 $$\alpha_1=\alpha_r=0.5(1-\displaystyle\sum_{s=2}^{r-1} \alpha_s)$$
 
-The final goal of the work is to find the optimal weight $\lambda^{·}$ (by direct passive search on a grid $\lambda_l$), which minimizes the distance from the approximately found optimal value of the integral criterion $J^{·}(\omega^{·},\delta^{·})$ to the ideal point $\hat{J}(\hat{\omega},\hat{\delta})=\hat{J}(0,0)=0$:
+The final goal of the work is to find the optimal weight $\lambda^{·}$ (by direct passive search on a grid $\lambda_l$), which minimizes the distance from the approximately found optimal value of the integral criterion $J^{·}(\omega^{·},\delta^{·})$ to the ideal point $\hat{J}(\hat{\omega},\hat{\delta})=\hat{J}(0;0)=0$:
 $$dist(J^{·},\hat{J})\to\underset{\lambda}{min}$$
 
 Formula for calculating distance:
